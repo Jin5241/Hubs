@@ -1,21 +1,18 @@
 package HCA;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollBar;
-import javax.swing.UIManager;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextPane;
 import java.awt.Color;
-import javax.swing.ImageIcon;
+import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.SystemColor;
-import javax.swing.JTextField;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 public class CAF extends JFrame {
 
@@ -49,10 +46,6 @@ public class CAF extends JFrame {
 		setContentPane(contentPane1);
 		contentPane1.setLayout(null);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(1118, 0, 28, 911);
-		contentPane1.add(scrollBar);
-		
 		JLabel label = new JLabel("New label");
 		label.setIcon(new ImageIcon("D:\\CA\u56FE\u7247\\911oIPjn42L._SX522_.jpg"));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -79,5 +72,9 @@ public class CAF extends JFrame {
 		textPane.setText("\u20AC22.5");
 		textPane.setBounds(37, 163, 147, 72);
 		contentPane1.add(textPane);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 2, 2);
+		contentPane1.add(scrollPane);
 	}
 }

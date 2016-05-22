@@ -82,7 +82,7 @@ public class SearchF extends JFrame {
 		contentPane.add(textField1);
 		textField1.setColumns(10);
 
-		JButton button1 = new JButton("Search");
+		button1 = new JButton("Search");
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -110,16 +110,17 @@ public class SearchF extends JFrame {
 		contentPane.add(textPane_1);
 
 		textPane_2 = new JTextPane();
+		textPane_2.setFont(new Font("Lucida Calligraphy", Font.BOLD | Font.ITALIC, 19));
 		textPane_2.setText("Recommend");
-		textPane_2.setBounds(172, 321, 78, 24);
+		textPane_2.setBounds(184, 320, 145, 24);
 		contentPane.add(textPane_2);
 
 		button2 = new JButton("Kitchen");
-		button2.setBounds(285, 321, 89, 27);
+		button2.setBounds(343, 320, 89, 27);
 		contentPane.add(button2);
 
 		button3 = new JButton("Floor");
-		button3.setBounds(398, 321, 88, 27);
+		button3.setBounds(456, 320, 88, 27);
 		contentPane.add(button3);
 
 		button4 = new JButton("Clothes");
@@ -127,7 +128,7 @@ public class SearchF extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		button4.setBounds(510, 321, 88, 27);
+		button4.setBounds(568, 320, 88, 27);
 		contentPane.add(button4);
 
 
@@ -158,14 +159,18 @@ public class SearchF extends JFrame {
 		comboBox.setBounds(831, 35, 109, 35);
 	comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "English", "\u4E2D\u6587", "Deutsch" }));
 		contentPane.add(comboBox);
-	//	initialize(Locale.ENGLISH);
+		initialize(Locale.ENGLISH);
 
 
 	}
 	private void initialize(Locale locale) {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("language.messages", locale);
-		button1.setText(resourceBundle.getString("Search")); //$NON-NLS-1$
-		button2.setText(resourceBundle.getString("Kitchen")); //$NON-NLS-1$
+		button1.setText(resourceBundle.getString("Search")); 
+		button2.setText(resourceBundle.getString("Kitchen")); 
+		button3.setText(resourceBundle.getString("Floor"));  
+		button4.setText(resourceBundle.getString("Clothes"));  
+		button5.setText(resourceBundle.getString("Help")); 
+		
 	}
 
 }
