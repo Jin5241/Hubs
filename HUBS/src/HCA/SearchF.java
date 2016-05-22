@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
@@ -26,7 +28,7 @@ import java.awt.SystemColor;
 public class SearchF extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textField1;
 	
 	private JButton btnHelp;
 	private JTextPane textPane;
@@ -56,7 +58,7 @@ public class SearchF extends JFrame {
 	 * Create the frame.
 	 */
 	public SearchF() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 950, 531);
 		contentPane = new JPanel();
 		contentPane.setBackground(UIManager.getColor("Table.background"));
@@ -64,10 +66,17 @@ public class SearchF extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(115, 200, 534, 51);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textField1 = new JTextField();
+		textField1.addMouseListener(new MouseAdapter() {
+			public void MouseClicked(MouseEvent arg0){
+				textField1.setText("");
+			}
+			
+		});
+		textField1.setText("Please input");
+		textField1.setBounds(115, 200, 534, 51);
+		contentPane.add(textField1);
+		textField1.setColumns(10);
 		
 		JButton button1 = new JButton("Search");
 		button1.addActionListener(new ActionListener() {
