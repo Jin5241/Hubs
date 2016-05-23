@@ -1,12 +1,9 @@
 package HCA;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -14,17 +11,25 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
+
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.UIManager;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
-import java.awt.Font;
-import java.awt.SystemColor;
+import language.UniVar;
 
-public class SearchF extends JFrame {
+public class SearchF extends JFrame implements Initializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9010246327262198757L;
 	/**
 	 * 
 	 */
@@ -76,7 +81,7 @@ public class SearchF extends JFrame {
 			}
 
 		});
-		
+
 		textField1.setText("Please input");
 		textField1.setBounds(172, 240, 534, 51);
 		contentPane.add(textField1);
@@ -85,13 +90,18 @@ public class SearchF extends JFrame {
 		button1 = new JButton("Search");
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ResultF.invoke();
 			}
 		});
 		button1.setBounds(744, 244, 142, 43);
 		contentPane.add(button1);
 
-
 		button5 = new JButton("Help");
+		button5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Help.invoke();
+			}
+		});
 		button5.setBounds(724, 35, 72, 35);
 		contentPane.add(button5);
 
@@ -116,21 +126,32 @@ public class SearchF extends JFrame {
 		contentPane.add(textPane_2);
 
 		button2 = new JButton("Kitchen");
+		button2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ResultF.invoke();
+			}
+		});
 		button2.setBounds(343, 320, 89, 27);
 		contentPane.add(button2);
 
 		button3 = new JButton("Floor");
+		button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ResultF.invoke();
+			}
+		});
 		button3.setBounds(456, 320, 88, 27);
 		contentPane.add(button3);
 
 		button4 = new JButton("Clothes");
+
 		button4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ResultF.invoke();
 			}
 		});
 		button4.setBounds(568, 320, 88, 27);
 		contentPane.add(button4);
-
 
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.addItemListener(new ItemListener() {
@@ -139,17 +160,20 @@ public class SearchF extends JFrame {
 					if (comboBox.getSelectedIndex() != -1) {
 						switch (comboBox.getSelectedIndex()) {
 						case 0:
-							initialize(Locale.ENGLISH);
+							UniVar.locale = Locale.ENGLISH;
 							break;
 						case 1:
-							initialize(Locale.CHINESE);
+							UniVar.locale = Locale.CHINESE;
 							break;
 						case 2:
-							initialize(Locale.GERMAN);
+							UniVar.locale = Locale.GERMAN;
 							break;
-							
+
 						default:
 							break;
+						}
+						for(Initializable i:UniVar.frameList){
+							i.initialize();
 						}
 					}
 				}
@@ -157,20 +181,21 @@ public class SearchF extends JFrame {
 			}
 		});
 		comboBox.setBounds(831, 35, 109, 35);
-	comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "English", "\u4E2D\u6587", "Deutsch" }));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "English", "\u4E2D\u6587", "Deutsch" }));
 		contentPane.add(comboBox);
-		initialize(Locale.ENGLISH);
-
-
-	}
-	private void initialize(Locale locale) {
-		ResourceBundle resourceBundle = ResourceBundle.getBundle("language.messages", locale);
-		button1.setText(resourceBundle.getString("Search")); 
-		button2.setText(resourceBundle.getString("Kitchen")); 
-		button3.setText(resourceBundle.getString("Floor"));  
-		button4.setText(resourceBundle.getString("Clothes"));  
-		button5.setText(resourceBundle.getString("Help")); 
 		
+	
+		UniVar.locale = Locale.ENGLISH;
+		initialize();
+		UniVar.frameList.add(this);
 	}
 
+	public void initialize() {
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("language.messages", UniVar.locale);
+		button1.setText(resourceBundle.getString("Search"));
+		button2.setText(resourceBundle.getString("Kitchen"));
+		button3.setText(resourceBundle.getString("Floor"));
+		button4.setText(resourceBundle.getString("Clothes"));
+		button5.setText(resourceBundle.getString("Help"));
+	}
 }
