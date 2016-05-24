@@ -23,6 +23,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import language.UniVar;
+import javax.swing.JLabel;
 
 public class SearchF extends JFrame implements Initializable{
 
@@ -40,11 +41,11 @@ public class SearchF extends JFrame implements Initializable{
 	private JButton button5;
 	private JTextPane textPane;
 	private JTextPane textPane_1;
-	private JTextPane textPane_2;
 	private JButton button2;
 	private JButton button3;
 	private JButton button4;
 	private JButton button1;
+	private JLabel label4;
 
 	/**
 	 * Launch the application.
@@ -72,88 +73,83 @@ public class SearchF extends JFrame implements Initializable{
 		contentPane.setBackground(UIManager.getColor("Table.background"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		textField1 = new JTextField();
+		textField1.setBounds(172, 240, 534, 51);
 		textField1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				textField1.setText("");
 			}
 
 		});
+		contentPane.setLayout(null);
 
 		textField1.setText("Please input");
-		textField1.setBounds(172, 240, 534, 51);
 		contentPane.add(textField1);
 		textField1.setColumns(10);
 
 		button1 = new JButton("Search");
+		button1.setBounds(744, 244, 142, 43);
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ResultF.invoke();
 			}
 		});
-		button1.setBounds(744, 244, 142, 43);
 		contentPane.add(button1);
 
 		button5 = new JButton("Help");
+		button5.setBounds(724, 35, 72, 35);
 		button5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Help.invoke();
 			}
 		});
-		button5.setBounds(724, 35, 72, 35);
 		contentPane.add(button5);
 
 		textPane = new JTextPane();
+		textPane.setBounds(175, 155, 171, 80);
 		textPane.setText("Hubs ");
 		textPane.setForeground(SystemColor.textHighlight);
 		textPane.setFont(new Font("Broadway", Font.BOLD | Font.ITALIC, 50));
-		textPane.setBounds(175, 155, 171, 80);
 		contentPane.add(textPane);
 
 		textPane_1 = new JTextPane();
+		textPane_1.setBounds(357, 147, 427, 78);
 		textPane_1.setText("Cleaning Agents");
 		textPane_1.setForeground(SystemColor.textHighlight);
 		textPane_1.setFont(new Font("Papyrus", Font.BOLD | Font.ITALIC, 45));
-		textPane_1.setBounds(357, 147, 427, 78);
 		contentPane.add(textPane_1);
 
-		textPane_2 = new JTextPane();
-		textPane_2.setFont(new Font("Lucida Calligraphy", Font.BOLD | Font.ITALIC, 19));
-		textPane_2.setText("Recommend");
-		textPane_2.setBounds(184, 320, 145, 24);
-		contentPane.add(textPane_2);
-
 		button2 = new JButton("Kitchen");
+		button2.setBounds(343, 320, 89, 27);
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ResultF.invoke();
 			}
 		});
-		button2.setBounds(343, 320, 89, 27);
 		contentPane.add(button2);
 
 		button3 = new JButton("Floor");
+		button3.setBounds(456, 320, 88, 27);
 		button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ResultF.invoke();
 			}
 		});
-		button3.setBounds(456, 320, 88, 27);
 		contentPane.add(button3);
 
 		button4 = new JButton("Clothes");
+		button4.setBounds(568, 320, 88, 27);
 
 		button4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ResultF.invoke();
 			}
 		});
-		button4.setBounds(568, 320, 88, 27);
 		contentPane.add(button4);
 
 		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setBounds(831, 35, 109, 35);
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				if (arg0.getStateChange() == ItemEvent.SELECTED) {
@@ -180,9 +176,15 @@ public class SearchF extends JFrame implements Initializable{
 
 			}
 		});
-		comboBox.setBounds(831, 35, 109, 35);
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "English", "\u4E2D\u6587", "Deutsch" }));
 		contentPane.add(comboBox);
+		
+		label4 = new JLabel("New label");
+		label4.setFont(new Font("»ªÎÄÁ¥Êé", Font.BOLD | Font.ITALIC, 26));
+		label4.setBounds(172, 320, 157, 27);
+		contentPane.add(label4);
+		
+		
 		
 	
 		UniVar.locale = Locale.ENGLISH;
@@ -197,5 +199,6 @@ public class SearchF extends JFrame implements Initializable{
 		button3.setText(resourceBundle.getString("Floor"));
 		button4.setText(resourceBundle.getString("Clothes"));
 		button5.setText(resourceBundle.getString("Help"));
+		label4.setText(resourceBundle.getString("Recommend"));
 	}
 }
