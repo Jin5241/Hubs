@@ -1,4 +1,5 @@
 package HCA;
+import dao.*;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -55,6 +56,11 @@ public class SearchF extends JFrame implements Initializable{
 			public void run() {
 				try {
 					SearchF frame = new SearchF();
+					DBConnection.connect();
+					boolean a=DBConnection.connect();
+					if(a=true){
+						System.out.println("connect success");
+					}
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
