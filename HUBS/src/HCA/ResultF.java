@@ -20,15 +20,18 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import language.UniVar;
+import javax.swing.JTabbedPane;
 
 public class ResultF extends JFrame implements Initializable {
 
 	private static final long serialVersionUID = -6413652538654277922L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTable table;
 	private JButton button;
 	private JComboBox<String> comboBox;
+	private JTable EN;
+	private JTable CH;
+	private JTable DE;
 
 	/**
 	 * Launch the application.
@@ -60,7 +63,7 @@ public class ResultF extends JFrame implements Initializable {
 
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(103, 26, 551, 32);
+		textField.setBounds(103, 26, 594, 32);
 		contentPane.add(textField);
 
 		button = new JButton();
@@ -69,14 +72,14 @@ public class ResultF extends JFrame implements Initializable {
 				ResultF.invoke();
 			}
 		});
-		button.setBounds(676, 25, 81, 33);
+		button.setBounds(728, 26, 81, 33);
 		contentPane.add(button);
 
 		comboBox = new JComboBox<String>();
 		comboBox.setToolTipText("Sort by");
 		comboBox.setForeground(UIManager.getColor("Button.foreground"));
 		comboBox.setBackground(UIManager.getColor("Button.disabledShadow"));
-		comboBox.setBounds(727, 71, 135, 32);
+		comboBox.setBounds(771, 72, 105, 32);
 		contentPane.add(comboBox);
 
 		JLabel label = new JLabel("Sort by");
@@ -84,19 +87,27 @@ public class ResultF extends JFrame implements Initializable {
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.BLACK);
 		label.setBackground(Color.WHITE);
-		label.setBounds(661, 78, 56, 18);
+		label.setBounds(711, 79, 56, 18);
 		contentPane.add(label);
-
-		table = new JTable();
-		table.setToolTipText("tabel");
-		table.setForeground(UIManager.getColor("Button.foreground"));
-		table.setBackground(UIManager.getColor("Button.focus"));
-		table.setBounds(-55, 408, 413, -305);
-		contentPane.add(table);
 
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(890, 13, 28, 475);
 		contentPane.add(scrollBar);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(103, 71, 594, 404);
+		contentPane.add(tabbedPane);
+		
+		EN = new JTable();
+		tabbedPane.addTab("English", null, EN, null);
+		
+		CH = new JTable();
+		tabbedPane.addTab("ÖÐÎÄ", null, CH, null);
+		
+		DE = new JTable();
+		DE.setCellSelectionEnabled(true);
+		DE.setColumnSelectionAllowed(true);
+		tabbedPane.addTab("Deutsch", null, DE, null);
 		initialize();
 		UniVar.frameList.add(this);
 	}

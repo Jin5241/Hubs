@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import language.UniVar;
@@ -23,7 +22,7 @@ public class Help extends JFrame implements Initializable{
 	private static final long serialVersionUID = 3576579071121107438L;
 	private JPanel contentPane;
 	private JLabel Label2;
-	private JTextField textField1;
+	private JTextArea textField1;
 	private JTextArea textArea1;
 	private JLabel label3;
 
@@ -62,7 +61,9 @@ public class Help extends JFrame implements Initializable{
 		Label2.setBounds(386, 28, 197, 40);
 		contentPane.add(Label2);
 		
-		textField1 = new JTextField();
+		textField1 = new JTextArea();
+		textField1.setLineWrap(true); 
+		textField1.setText("a\r\nb\r\n");
 		textField1.setEditable(false);
 
 		textField1.setBounds(77, 83, 800, 401);

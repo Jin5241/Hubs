@@ -48,30 +48,7 @@ public class SearchF extends JFrame implements Initializable{
 	private JButton button1;
 	private JLabel label4;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SearchF frame = new SearchF();
-					DBConnection.connect();
-					boolean a=DBConnection.connect();
-					if(a=true){
-						System.out.println("connect success");
-					}
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public SearchF() throws Exception {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 997, 629);
@@ -207,4 +184,17 @@ public class SearchF extends JFrame implements Initializable{
 		button5.setText(resourceBundle.getString("Help"));
 		label4.setText(resourceBundle.getString("Recommend"));
 	}
+	public static void invoke() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					SearchF frame = new SearchF();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 }
