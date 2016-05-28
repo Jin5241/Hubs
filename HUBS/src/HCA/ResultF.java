@@ -67,11 +67,7 @@ public class ResultF extends JFrame implements Initializable {
 		contentPane.add(textField);
 
 		button = new JButton();
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ResultF.invoke();
-			}
-		});
+		button.addActionListener(e->ResultF.invoke());
 		button.setBounds(728, 26, 81, 33);
 		contentPane.add(button);
 

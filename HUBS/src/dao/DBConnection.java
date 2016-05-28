@@ -8,12 +8,12 @@ import java.sql.Statement;
 
 public class DBConnection {
 
-	private static Connection connection = null;
+	private static Connection connection=null;
 	private static Statement statement = null;
 
 	public static boolean connect() {
 		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:res\\HUBS.db");
+			connection = DriverManager.getConnection("jdbc:sqlite:res\\CA2.db");
 		} catch (SQLException e) {
 			return false;
 		}

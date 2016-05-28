@@ -11,8 +11,8 @@ public static void addCA(CA ca) {
 	CA.storeCA(ca);
 	Modifier.addCA(ca);
 }
-public static Object deleteCA(int id) {
-	return null;
-	
+public static void deleteCA(int id,CA ca) {
+	CA.deleteCA(ca);
+	Modifier.deleteCA(id);
 }
 }

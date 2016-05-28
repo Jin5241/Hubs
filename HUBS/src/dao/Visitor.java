@@ -13,9 +13,4 @@ public class Visitor {
 		ResultSet rs = DBConnection.executeSelect("select * from Tag");
 		return rs;
 	}
-
-	public static ResultSet searchsql(String keyw){
-		ResultSet rs = DBConnection.executeSelect("select * from CA_Name_CH='" + keyw + "'");
-		return rs;
-	}
 }

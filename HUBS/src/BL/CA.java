@@ -1,6 +1,7 @@
 package BL;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +27,15 @@ public class CA {
 	private Tag tag;
 	private List<String> remarks;
 	
+	private int relevance=0;
+	
 
 	public static void storeCA(CA ca) {
 		cas.put(ca.id, ca);
+	}
+	
+	public static void deleteCA(CA ca) {
+		cas.remove(ca.id);
 	}
 
 	public static CA getCA(int id) {
@@ -106,9 +113,17 @@ public class CA {
 		this.remarks = new ArrayList<String>();
 		increaseCount();
 	}
+	
+	public void setRelevance(int r){
+		this.relevance=r;
+	}
+	
+	public int getRelevance(){
+		return this.relevance;
+	}
 
-	public static Map<Integer, CA> getCas() {
-		return cas;
+	public static Collection<CA> getCollection() {
+		return cas.values();
 	}
 
 	public String getTipsen() {
@@ -129,5 +144,10 @@ public class CA {
 
 	public List<String> getRemarks() {
 		return remarks;
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.nameen;
 	}
 }
